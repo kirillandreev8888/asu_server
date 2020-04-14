@@ -269,7 +269,7 @@
                         success: function (data) {
                             $("#modalEditLesson").modal('hide');
                             request_loadlessons();
-                            if (operation===OPERATION_DELETE) {
+                            if (operation === OPERATION_DELETE) {
                                 var idstring = "#para" + selectedtime + "day" + selectedday;
                                 $(idstring).html('Добавить');
                             }
@@ -327,9 +327,13 @@
 
                 $("#modalEditLesson").modal('show');
                 if (selectedid) {
-                    $('#name_input').val($('#'+id+'name').html());
-                    $('#classroom_input').val($('#'+id+'classroom').html());
-                    $('#type_input').val($('#'+id+'type').html());
+                    $('#name_input').val($('#' + id + 'name').html());
+                    $('#classroom_input').val($('#' + id + 'classroom').html());
+                    $('#type_input').val($('#' + id + 'type').html());
+                } else {
+                    $('#name_input').val('');
+                    $('#classroom_input').val('');
+                    $('#type_input').val('Лекция');
                 }
 
             });
