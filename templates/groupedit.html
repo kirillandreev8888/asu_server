@@ -1,0 +1,350 @@
+{% extends 'base.html' %}
+
+{% block title %} Редактор расписания для группы {% endblock %}
+
+{% block body %}
+    <div class="mainbody">
+        <h1>Группа {{ group.name }}</h1>
+        <a class="btn btn-outline-primary" href="../" id="loadButton" name="{{ group.id }}"
+           style="margin-bottom: 10px; margin-left: 10px">Назад</a>
+        {% comment %}        <a class="btn btn-outline-primary" id="showpopup" style="margin-bottom: 10px; margin-left: 10px">Открыть
+            меню</a>{% endcomment %}
+        {% comment %} vvv ТУТ ТАБЛИЦА vvv {% endcomment %}
+        <table class="table" id="sched">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Пара</th>
+                <th>Понедельник (чс)</th>
+                <th>Понедельник (зн)</th>
+                <th>Вторник (чс)</th>
+                <th>Вторник (зн)</th>
+                <th>Среда (чс)</th>
+                <th>Среда (зн)</th>
+                <th>Четверг (чс)</th>
+                <th>Четверг (зн)</th>
+                <th>Пятница (чс)</th>
+                <th>Пятница (зн)</th>
+                <th>Суббота (чс)</th>
+                <th>Суббота (зн)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr id="para1">
+                <th scope="row">1</th>
+                <td id="para1day1">Добавить</td>
+                <td id="para1day11">Добавить</td>
+                <td id="para1day2">Добавить</td>
+                <td id="para1day12">Добавить</td>
+                <td id="para1day3">Добавить</td>
+                <td id="para1day13">Добавить</td>
+                <td id="para1day4">Добавить</td>
+                <td id="para1day14">Добавить</td>
+                <td id="para1day5">Добавить</td>
+                <td id="para1day15">Добавить</td>
+                <td id="para1day6">Добавить</td>
+                <td id="para1day16">Добавить</td>
+            </tr>
+            <tr id="para2">
+                <th scope="row">2</th>
+                <td id="para2day1">Добавить</td>
+                <td id="para2day11">Добавить</td>
+                <td id="para2day2">Добавить</td>
+                <td id="para2day12">Добавить</td>
+                <td id="para2day3">Добавить</td>
+                <td id="para2day13">Добавить</td>
+                <td id="para2day4">Добавить</td>
+                <td id="para2day14">Добавить</td>
+                <td id="para2day5">Добавить</td>
+                <td id="para2day15">Добавить</td>
+                <td id="para2day6">Добавить</td>
+                <td id="para2day16">Добавить</td>
+            </tr>
+            <tr id="para3">
+                <th scope="row">3</th>
+                <td id="para3day1">Добавить</td>
+                <td id="para3day11">Добавить</td>
+                <td id="para3day2">Добавить</td>
+                <td id="para3day12">Добавить</td>
+                <td id="para3day3">Добавить</td>
+                <td id="para3day13">Добавить</td>
+                <td id="para3day4">Добавить</td>
+                <td id="para3day14">Добавить</td>
+                <td id="para3day5">Добавить</td>
+                <td id="para3day15">Добавить</td>
+                <td id="para3day6">Добавить</td>
+                <td id="para3day16">Добавить</td>
+            </tr>
+            <tr id="para4">
+                <th scope="row">4</th>
+                <td id="para4day1">Добавить</td>
+                <td id="para4day11">Добавить</td>
+                <td id="para4day2">Добавить</td>
+                <td id="para4day12">Добавить</td>
+                <td id="para4day3">Добавить</td>
+                <td id="para4day13">Добавить</td>
+                <td id="para4day4">Добавить</td>
+                <td id="para4day14">Добавить</td>
+                <td id="para4day5">Добавить</td>
+                <td id="para4day15">Добавить</td>
+                <td id="para4day6">Добавить</td>
+                <td id="para4day16">Добавить</td>
+            </tr>
+            <tr id="para5">
+                <th scope="row">5</th>
+                <td id="para5day1">Добавить</td>
+                <td id="para5day11">Добавить</td>
+                <td id="para5day2">Добавить</td>
+                <td id="para5day12">Добавить</td>
+                <td id="para5day3">Добавить</td>
+                <td id="para5day13">Добавить</td>
+                <td id="para5day4">Добавить</td>
+                <td id="para5day14">Добавить</td>
+                <td id="para5day5">Добавить</td>
+                <td id="para5day15">Добавить</td>
+                <td id="para5day6">Добавить</td>
+                <td id="para5day16">Добавить</td>
+            </tr>
+            <tr id="para6">
+                <th scope="row">6</th>
+                <td id="para6day1">Добавить</td>
+                <td id="para6day11">Добавить</td>
+                <td id="para6day2">Добавить</td>
+                <td id="para6day12">Добавить</td>
+                <td id="para6day3">Добавить</td>
+                <td id="para6day13">Добавить</td>
+                <td id="para6day4">Добавить</td>
+                <td id="para6day14">Добавить</td>
+                <td id="para6day5">Добавить</td>
+                <td id="para6day15">Добавить</td>
+                <td id="para6day6">Добавить</td>
+                <td id="para6day16">Добавить</td>
+            </tr>
+            <tr id="para7">
+                <th scope="row">7</th>
+                <td id="para7day1">Добавить</td>
+                <td id="para7day11">Добавить</td>
+                <td id="para7day2">Добавить</td>
+                <td id="para7day12">Добавить</td>
+                <td id="para7day3">Добавить</td>
+                <td id="para7day13">Добавить</td>
+                <td id="para7day4">Добавить</td>
+                <td id="para7day14">Добавить</td>
+                <td id="para7day5">Добавить</td>
+                <td id="para7day15">Добавить</td>
+                <td id="para7day6">Добавить</td>
+                <td id="para7day16">Добавить</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    {% comment %} vvv POPUP HERE vvv {% endcomment %}
+    <div id="modalEditLesson" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Редактирование занятия</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% comment %} vv POPUP BODY HERE vv {% endcomment %}
+                    <style>
+                        .form-group, .col-xs-10 {
+                            margin-left: 10px;
+                        }
+
+                        .col-xs-10 {
+                            min-width: 350px;
+                        }
+
+                        .col-xs-2 {
+                            min-width: 100px;
+                        }
+                    </style>
+                    <div class="form-group row">
+                        <label for="name_input" class="col-xs-2 col-form-label">Название</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" id="name_input">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="classroom_input" class="col-xs-2 col-form-label">Аудитория</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" id="classroom_input">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="type_input" class="col-xs-2 col-form-label">Тип</label>
+                        <div class="col-xs-10">
+                            <select class="form-control" id="type_input">
+                                <option>Лекция</option>
+                                <option>Семинар</option>
+                                <option>Лабораторная</option>
+                            </select>
+                        </div>
+                    </div>
+                    {% comment %} ^^ POPUP BODY END ^^ {% endcomment %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="delete_lesson_button">Удалить</button>
+                    <button type="button" class="btn btn-primary" id="save_changes_button">Сохранить изменения</button>
+                </div>
+            </div><!-- /.модальное окно-Содержание -->
+        </div><!-- /.модальное окно-диалог -->
+    </div><!-- /.модальное окно -->
+    <style>
+        .mainbody {
+            margin-left: 0 !important;
+        }
+
+        td {
+            font-size: 10px;
+            cursor: pointer;
+            color: lightgray;
+        }
+
+        td:hover {
+            outline: 2px solid red;
+            outline-offset: -2px;
+        }
+
+        .list-group {
+            max-width: 50%;
+        }
+    </style>
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        const OPERATION_ADD = 'add';
+        const OPERATION_EDIT = 'edit';
+        const OPERATION_DELETE = 'delete';
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        $(function () {
+            var loadbutton = $("#loadButton");
+            var selectedgroup = loadbutton.attr('name');
+            var selectedday;
+            var selectedtime;
+            var selectedid;
+
+            request_loadlessons();
+
+            function request_save(operation) {
+                var lesson = {
+                    id: selectedid,
+                    name: $('#name_input').val(),
+                    classroom: $('#classroom_input').val(),
+                    type: $('#type_input').val(),
+                    time: selectedtime,
+                    day: selectedday,
+                    group: selectedgroup
+                };
+                var mydata = {
+                    csrfmiddlewaretoken: getCookie('csrftoken'),
+                    operation: operation,
+                    lesson: JSON.stringify(lesson)
+                };
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "../api-editlesson/",
+                        data: mydata,
+                        success: function (data) {
+                            $("#modalEditLesson").modal('hide');
+                            request_loadlessons();
+                            if (operation===OPERATION_DELETE) {
+                                var idstring = "#para" + selectedtime + "day" + selectedday;
+                                $(idstring).html('Добавить');
+                            }
+                        }
+                    }
+                )
+            }
+
+            function request_loadlessons() {
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "../api-loadgrouplessons/",
+                        data: {
+                            csrfmiddlewaretoken: getCookie('csrftoken'),
+                            id: selectedgroup
+                        },
+                        success: function (data) {
+                            data = JSON.parse(data);
+                            data.forEach(function (lesson, i, data) {
+                                var idstring = "#para" + lesson.time + "day" + lesson.day;
+                                var idss = "para" + lesson.time + "day" + lesson.day;
+                                $(idstring).html('');
+                                $(idstring).attr('name', lesson.id);
+                                $(idstring).append($('<div/>', {
+                                    id: idss + 'name',
+                                    text: lesson.name,
+                                    style: 'color: black'
+                                }));
+                                $(idstring).append($('<div/>', {
+                                    id: idss + 'type',
+                                    text: lesson.type,
+                                    style: 'color: blue'
+                                }));
+                                $(idstring).append($('<div/>', {
+                                    id: idss + 'classroom',
+                                    text: lesson.classroom,
+                                    style: 'color: brown'
+                                }));
+                            })
+                        }
+                    }
+                )
+            }
+
+            loadbutton.click(function () {
+                request_loadlessons();
+            });
+
+            $("td").click(function () {
+                selectedid = $(this).attr('name');
+                var id = $(this).attr('id');
+                selectedtime = id.slice(4).slice(0, 1);
+                selectedday = id.slice(8);
+
+                $("#modalEditLesson").modal('show');
+                if (selectedid) {
+                    $('#name_input').val($('#'+id+'name').html());
+                    $('#classroom_input').val($('#'+id+'classroom').html());
+                    $('#type_input').val($('#'+id+'type').html());
+                }
+
+            });
+
+            $("#save_changes_button").click(function () {
+                if (!selectedid)
+                    request_save(OPERATION_ADD);
+                else
+                    request_save(OPERATION_EDIT);
+            });
+
+            $("#delete_lesson_button").click(function () {
+                request_save(OPERATION_DELETE);
+            });
+
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} Авторизация {% endblock %}
+
+{% block body %}
+    <div class="main_block_elem">
+        <h2 style="text-align:center">Авторизация</h2>
+        {% for error in errors.values %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+
+        <form method="POST" class="form-signin">
+            {% csrf_token %}
+            <div class="acaca"><img src="https://images.vfl.ru/ii/1586280345/467359e7/30132914_m.png" alt=""></div>
+            <label for="uname" class="sr-only">Username</label>
+            <input type="text" name="username" class="form-control" placeholder="username" required="" autofocus=""
+                   id="uname" value="{{ username }}">
+            <label for="psw" class="sr-only">Password</label>
+            <input type="password" name="password" id="psw" class="form-control" placeholder="Password" required="">
+            {#  <div class="checkbox mb-3">#}
+            {#    <label>#}
+            {#      <input type="checkbox" value="remember-me"> Remember me#}
+            {#    </label>#}
+            {#  </div>#}
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Авторизоваться</button>
+        </form>
+    </div>
+    <style>
+        h2 {
+
+            margin-top: 15%;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        .acaca {
+            max-width: 300px;
+            align-content: center;
+            margin-bottom: 25px;
+        }
+
+        .acaca img {
+            max-width: 50%;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+{% endblock %}

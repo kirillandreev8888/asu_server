@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% block title %} Редактор групп {% endblock %}
+
+{% block body %}
+    <div class="mainbody">
+        <h1>Список групп</h1>
+        <a class="btn btn-outline-primary" id="addGroupButton" style="margin-bottom: 10px; margin-left: 10px">Добавить
+            группу</a>
+        <ul class="list-group">
+            <style>
+                .btn-danger, .btn-info {
+                    visibility: hidden;
+                }
+
+                .row:hover .btn-danger, .row:hover .btn-info {
+                    visibility: visible;
+                }
+            </style>
+            {% for group in groups %}
+                <li class="list-group-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <a href="{{ group.id }}/"
+                                   style="font-size: 25px; font-family: monospace"> {{ group.name }} </a>
+                            </div>
+                            <div class="col " style="max-width: 75px">
+                                <button class="btn btn-info" name="{{ group.id }}" group_name="{{ group.name }}" style="color: white"><img
+                                        src="https://b.kisscc0.com/20180817/pge/kisscc0-colored-pencil-computer-icons-drawing-blue-pencil-gray-pencil-icon-5b76f25b027fd6.6136125815345219470103.png"
+                                        style="max-width: 25px"></button>
+                            </div>
+                            <div class="col " style="max-width: 75px">
+                                <button class="btn btn-danger" name="{{ group.id }}" style="color: white"><img
+                                        src="https://img.icons8.com/wired/2x/trash.png" style="max-width: 25px">
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <style>
+        .list-group {
+            max-width: 50%;
+        }
+    </style>
+    <div id="modalEditGroup" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Добавить группу</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% comment %} vv POPUP BODY HERE vv {% endcomment %}
+                    <style>
+                        .form-group, .col-xs-10 {
+                            margin-left: 10px;
+                        }
+
+                        .col-xs-10 {
+                            min-width: 350px;
+                        }
+
+                        .col-xs-2 {
+                            min-width: 100px;
+                        }
+                    </style>
+                    <div class="form-group row">
+                        <label for="name_input" class="col-xs-2 col-form-label">Название</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" id="name_input">
+                        </div>
+                    </div>
+                    {% comment %} ^^ POPUP BODY END ^^ {% endcomment %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" id="save_new_group_button">Сохранить</button>
+                </div>
+            </div><!-- /.модальное окно-Содержание -->
+        </div><!-- /.модальное окно-диалог -->
+    </div><!-- /.модальное окно -->
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        const OPERATION_ADD = 'add';
+        const OPERATION_EDIT = 'edit';
+        const OPERATION_DELETE = 'delete';
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        $(function () {
+            var current_operation;
+            var current_id = 0;
+
+            function request_something(mydata) {
+                mydata.csrfmiddlewaretoken = getCookie('csrftoken');
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "api-editgrouplist/",
+                        data: mydata,
+                        success: function (data) {
+                            $("#modalEditGroup").modal('hide');
+                            location.reload();
+                        }
+                    }
+                )
+            }
+
+            $('#addGroupButton').click(function () {
+                current_operation = OPERATION_ADD;
+                $('#name_input').val('');
+                $('h4.modal-title').html('Добавить группу');
+                $('#modalEditGroup').modal('show');
+            });
+
+            $('#save_new_group_button').click(function () {
+                var name = $('#name_input').val();
+                var mydata = {
+                    operation: current_operation,
+                    name: name,
+                    id: current_id
+                };
+                request_something(mydata)
+            });
+
+            $('.btn-danger').click(function () {
+                var id = $(this).attr('name');
+                var mydata = {
+                    operation: OPERATION_DELETE,
+                    id: id
+                };
+                request_something(mydata)
+            });
+
+            $('.btn-info').click(function () {
+                current_operation = OPERATION_EDIT;
+                current_id = $(this).attr('name')
+                $('#name_input').val($(this).attr('group_name'))
+                $('h4.modal-title').html('Изменить название группы')
+                $('#modalEditGroup').modal('show');
+            })
+
+        });
+    </script>
+{% endblock %}
