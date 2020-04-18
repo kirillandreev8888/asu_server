@@ -9,6 +9,9 @@
             группу</a>
         <ul class="list-group">
             <style>
+                .list-group{
+                    min-width: fit-content;
+                }
                 .btn-danger, .btn-info {
                     visibility: hidden;
                 }
@@ -161,6 +164,9 @@
                 $('#name_input').val($(this).attr('group_name'))
                 $('h4.modal-title').html('Изменить название группы')
                 $('#modalEditGroup').modal('show');
+            });
+            $('#name_input').on('input', function () {
+                $(this).val($(this).val().toLocaleUpperCase())
             })
 
         });

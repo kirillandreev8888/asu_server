@@ -57,7 +57,7 @@ def loadgroups(request):
         return HttpResponse("404")
 
 
-def editlesson(request):
+def editlesson(request): #TODO сделать галочку числитель и знаменатель
     if request.method == 'POST':
         operation = request.POST.get('operation')
         lesson = request.POST.get('lesson')
@@ -106,3 +106,17 @@ def editgrouplist(request):
         return HttpResponse("its ok")
     else:
         return HttpResponse("404")
+
+
+def searchforgroups(request, name):
+    if request.method == 'GET':
+        groups = Group.objects.filter(name__icontains=name).values()
+        groups = list(groups)
+        return HttpResponse(json.dumps(groups, ensure_ascii=False))
+
+
+def searchforlessons(request, id):
+    if request.method == 'GET':
+        lessons_list = (Lesson.objects.filter(group=id).values('name', 'classroom', 'type', 'time', 'day'))
+        lessons_list = list(lessons_list)
+        return HttpResponse(json.dumps(lessons_list, ensure_ascii=False))

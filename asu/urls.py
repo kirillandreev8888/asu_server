@@ -8,6 +8,8 @@ urlpatterns = [
     path('auth/', views.auth),
     path('404/', views.notfound),
     path('groups/', views.groups),
+    re_path(r'^groups/api-searchforgroups/(?P<name>.{0,999})/$', views.searchforgroups),
+    re_path(r'^groups/api-searchforlessons/(?P<id>.{0,999})/$', views.searchforlessons),
     path('groups/api-editgrouplist/', views.editgrouplist),
     path('groups/api-loadgrouplessons/', views.loadgroups),
     path('groups/api-editlesson/', views.editlesson),
